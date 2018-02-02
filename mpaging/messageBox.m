@@ -1,0 +1,33 @@
+/*
+ Copyright(C) 2013-2014 MotionPortrait, Inc. All Rights Reserved.
+ 
+ This software is provided 'as-is', without any express or implied
+ warranty. In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ 
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it.
+ */
+
+#import "messageBox.h"
+
+@interface messageBox () {
+}
+
+@end
+
+
+@implementation messageBox
+
++ (void)showMessage:(NSString*)msg title:(NSString*)title {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:title message:msg
+                              delegate:self cancelButtonTitle:nil
+                              otherButtonTitles:@"OK", nil];
+        [alert show];
+    });
+}
+
+
+@end
